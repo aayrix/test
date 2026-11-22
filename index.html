@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="ACCA FA1 Sales and Purchases practice test">
-  <title>ACCA FA1 | Sales & Purchases Test</title>
+  <meta name="description" content="Practice ACCA FA1 and MA1 exams with timed multiple-choice tests and answer explanations.">
+  <title>ACCA Practice Hub | FA1 and MA1</title>
   <style>
     :root { --navy:#082b4c; --blue:#0969b3; --sky:#eaf5ff; --ink:#142433; --muted:#627181; --line:#d8e1e9; --green:#087a58; --red:#b42318; --amber:#b54708; --paper:#fff; }
     * { box-sizing:border-box; }
@@ -14,7 +14,7 @@
     .timer { font-variant-numeric:tabular-nums; font-weight:700; background:#ffffff1a; border:1px solid #ffffff38; padding:7px 12px; border-radius:5px; }
     main { max-width:1080px; margin:30px auto; padding:0 20px 42px; }
     .intro, .test-card, .results { background:var(--paper); border:1px solid var(--line); border-radius:10px; box-shadow:0 3px 12px #0b304a0d; }
-    .intro { padding:30px; border-top:5px solid var(--blue); } h1 { color:var(--navy); margin:0 0 8px; font-size:clamp(1.6rem,4vw,2.35rem); } h2 { color:var(--navy); }
+    .intro { padding:34px; border-top:5px solid var(--blue); } h1 { color:var(--navy); margin:0 0 8px; font-size:clamp(1.6rem,4vw,2.35rem); } h2 { color:var(--navy); }
     .intro p { margin:8px 0; color:var(--muted); max-width:780px; } .rules { display:flex; flex-wrap:wrap; gap:10px; margin:22px 0; }
     .rule { background:var(--sky); color:#17466d; border-radius:4px; padding:8px 12px; font-size:.91rem; } .level-selector { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-top:20px; } .level-selector button { min-height:82px; } .level-selector small { display:block; margin-top:4px; font-weight:400; }
     button { border:0; border-radius:5px; padding:12px 19px; font-size:1rem; font-weight:700; cursor:pointer; transition:.15s ease; }
@@ -28,20 +28,58 @@
     .results { display:none; padding:32px; } .score-panel { background:var(--navy); color:#fff; padding:25px; border-radius:8px; display:flex; flex-wrap:wrap; align-items:center; gap:28px; } .score { font-size:3.4rem; line-height:1; font-weight:700; color:#8ed5ff; } .score-copy p { margin:4px 0 0; color:#d8eafa; } .result-summary { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:22px 0; } .stat { border:1px solid var(--line); border-radius:7px; padding:16px; } .stat strong { display:block; font-size:1.45rem; color:var(--navy); } .stat span { color:var(--muted); font-size:.88rem; }
     .review { margin-top:30px; } .review h2 { font-size:1.3rem; } .review-item { border:1px solid var(--line); border-left:5px solid var(--red); border-radius:5px; padding:16px; margin:12px 0; } .review-item.correct { border-left-color:var(--green); } .review-item.unanswered { border-left-color:var(--amber); } .review-item p { margin:4px 0; } .review-q { font-weight:700; color:#18354d; } .answer-good { color:var(--green); } .answer-bad { color:var(--red); } .explanation { color:var(--muted); font-size:.93rem; }
     .footer-note { color:var(--muted); font-size:.83rem; margin-top:25px; }
-    @media (max-width:600px) { .topbar { padding:13px 15px; } main { padding:0 13px 28px; margin:17px auto; } .intro,.results { padding:22px; } .progress-wrap { padding:17px 18px 0; } .question-area { padding:25px 18px; min-height:420px; } .nav { padding:14px 18px; } .nav-right { gap:6px; } button { padding:11px 13px; } .level-selector,.result-summary { grid-template-columns:1fr; } .score { font-size:2.8rem; } }
+    .topbar { min-height:72px; }
+    .hub-mark { display:flex; align-items:center; gap:11px; }
+    .brand-icon { display:grid; place-items:center; width:38px; height:38px; border-radius:10px; background:#ffffff18; color:#a6dcff; font-weight:800; }
+    .brand-copy { display:flex; flex-direction:column; line-height:1.2; }
+    .brand-copy small { color:#b8d2e6; font-size:.72rem; font-weight:400; letter-spacing:.02em; margin-top:4px; }
+    .eyebrow { color:var(--blue)!important; font-size:.78rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; margin:0 0 8px!important; }
+    .hub-intro { padding-bottom:24px; }
+    .hub-intro p { max-width:720px; }
+    .paper-grid { display:grid; grid-template-columns:1.2fr .8fr; gap:18px; margin-top:24px; }
+    .paper-card { min-width:0; background:#fff; border:1px solid var(--line); border-radius:10px; padding:24px; box-shadow:0 3px 12px #0b304a0a; }
+    .paper-card.featured { border-top:4px solid var(--blue); }
+    .paper-card.secondary-card { background:#f9fbfd; }
+    .paper-heading { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
+    .paper-heading h2 { font-size:1.25rem; margin:0; }
+    .paper-code { color:var(--blue); font-weight:800; font-size:.8rem; letter-spacing:.1em; }
+    .paper-label { display:inline-block; background:var(--sky); color:#17466d; border-radius:999px; padding:5px 10px; font-size:.78rem; font-weight:700; margin:11px 0 3px; }
+    .paper-card p { color:var(--muted); margin:8px 0; }
+    .paper-card .rules { margin:15px 0 18px; }
+    .paper-action { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:44px; text-decoration:none; }
+    a.paper-action { border-radius:5px; padding:11px 17px; color:#fff; background:var(--blue); font-weight:700; transition:.15s ease; }
+    a.paper-action:hover { background:#075997; transform:translateY(-1px); }
+    a.paper-action:focus-visible { outline:3px solid #88cfff; outline-offset:3px; }
+    .paper-card .level-selector { margin-top:14px; }
+    .paper-card .level-selector button { min-height:68px; }
+    @media (max-width:760px) { .paper-grid { grid-template-columns:1fr; } }
+    @media (max-width:600px) { .topbar { padding:13px 15px; } main { padding:0 13px 28px; margin:17px auto; } .intro,.results { padding:22px; } .paper-card { padding:20px; } .progress-wrap { padding:17px 18px 0; } .question-area { padding:25px 18px; min-height:420px; } .nav { padding:14px 18px; } .nav-right { gap:6px; } button { padding:11px 13px; } .level-selector,.result-summary { grid-template-columns:1fr; } .score { font-size:2.8rem; } }
   </style>
 </head>
 <body>
-  <header class="topbar"><div class="brand">ACCA <span>FA1</span> PRACTICE</div><div id="timer" class="timer" aria-live="polite">75:00</div></header>
+  <header class="topbar"><div class="hub-mark"><div class="brand-icon">A</div><div class="brand-copy"><div class="brand">ACCA <span>TEST HUB</span></div><small>Timed practice · clear explanations</small></div></div><div id="timer" class="timer" aria-live="polite">75:00</div></header>
   <main>
-    <section id="welcome" class="intro">
-      <h1>Sales, Purchases & Expenditure</h1>
-      <p><a href="ma1-mock-test.html">Open the ACCA MA1 Management Information mock test →</a></p>
-      <p>Choose an ACCA FA1 practice test level. Each level contains 50 compulsory multiple-choice questions covering sales, purchases, income, expenditure, tax, discounts, credit notes, supplier payments and effects on profit.</p>
-      <div class="rules"><span class="rule">50 compulsory MCQs</span><span class="rule">2 marks per question</span><span class="rule">100 marks total</span><span class="rule">Pass mark: 50% (25 correct)</span><span class="rule">75 minutes</span><span class="rule">Calculator permitted</span></div>
-      <p><strong>Select your level to begin:</strong></p>
-      <div id="levelChooser" class="level-selector"><button class="primary" data-level="easy">Easy<small>50 MCQs · 75 minutes</small></button><button class="primary" data-level="medium">Medium<small>50 MCQs · 75 minutes</small></button><button class="primary" data-level="hard">Hard<small>50 MCQs · 75 minutes</small></button></div>
-      <p class="footer-note">For practice only. Tax rates are those stated in each question. Amounts are rounded to the nearest cent where necessary.</p>
+    <section id="welcome" class="intro hub-intro">
+      <p class="eyebrow">ACCA exam practice</p>
+      <h1>Choose a paper. Build your confidence.</h1>
+      <p>Practise with timed multiple-choice tests, track your answers, and review explanations for every question.</p>
+      <div class="paper-grid">
+        <article class="paper-card featured">
+          <div class="paper-heading"><div><span class="paper-code">FOUNDATIONS IN ACCOUNTANCY</span><h2>Recording Financial Transactions</h2></div><span class="paper-label">FA1</span></div>
+          <p>Sales, purchases, income, expenditure, tax, discounts and the effect of transactions on profit.</p>
+          <div class="rules"><span class="rule">50 questions</span><span class="rule">75 minutes</span><span class="rule">100 marks</span></div>
+          <strong>Select a practice level</strong>
+          <div id="levelChooser" class="level-selector"><button class="primary" data-level="easy">Easy<small>Core concepts</small></button><button class="primary" data-level="medium">Medium<small>Mixed practice</small></button><button class="primary" data-level="hard">Hard<small>Exam challenge</small></button></div>
+        </article>
+        <article class="paper-card secondary-card">
+          <div class="paper-heading"><div><span class="paper-code">FOUNDATIONS IN ACCOUNTANCY</span><h2>Management Information</h2></div><span class="paper-label">MA1</span></div>
+          <p>Practise cost classification, materials, labour, overheads, costing methods and spreadsheet skills.</p>
+          <div class="rules"><span class="rule">50 questions</span><span class="rule">2 hours</span><span class="rule">100 marks</span></div>
+          <p><strong>Extra spreadsheet formula practice</strong></p>
+          <a class="paper-action" href="ma1-mock-test.html">Open MA1 mock test <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+      <p class="footer-note">For learning and revision. Practice questions are based on the relevant syllabus and specimen exam style.</p>
     </section>
     <section id="test" class="test-card" aria-live="polite">
       <div class="progress-wrap"><div class="progress-meta"><span id="questionCount">Question 1 of 50</span><span id="answeredCount">0 answered</span></div><div class="progress"><div id="progressBar"></div></div></div>
